@@ -15,9 +15,8 @@ import android.widget.Toast;
 
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.adapters.DapimAdapter;
-import com.hudiilfeld.shiurdiario.models.DafGemara;
+import com.hudiilfeld.shiurdiario.models.Daf;
 import com.hudiilfeld.shiurdiario.models.WebResponse_daf;
-import com.hudiilfeld.shiurdiario.models.WebResponse_masechet;
 import com.hudiilfeld.shiurdiario.view_models.WebService;
 
 import java.util.List;
@@ -36,7 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PreviousDapim_tab extends Fragment {
 
     RecyclerView previousDapimRV;
-    List<DafGemara> data;
+    List<Daf> data;
 
     private PreviousDapim_tab.OnFragmentInteractionListener mListener;
 

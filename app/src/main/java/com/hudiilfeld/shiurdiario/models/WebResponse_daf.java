@@ -4,17 +4,17 @@ import java.util.List;
 
 public class WebResponse_daf {
 
-    private List<DafGemara> past_pages;
+    private List<Daf> past_pages;
 
-    public WebResponse_daf(List<DafGemara> past_pages) {
+    public WebResponse_daf(List<Daf> past_pages) {
         this.past_pages = past_pages;
     }
 
-    public List<DafGemara> getPast_pages() {
+    public List<Daf> getPast_pages() {
         return past_pages;
     }
 
-    public void setPast_pages(List<DafGemara> d) {
+    public void setPast_pages(List<Daf> d) {
         this.past_pages = d;
     }
 }

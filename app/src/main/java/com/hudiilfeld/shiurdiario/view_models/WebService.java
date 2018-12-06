@@ -1,16 +1,11 @@
 package com.hudiilfeld.shiurdiario.view_models;
 
-import com.hudiilfeld.shiurdiario.models.D;
-import com.hudiilfeld.shiurdiario.models.DafGemara;
 import com.hudiilfeld.shiurdiario.models.WebResponse_daf;
 import com.hudiilfeld.shiurdiario.models.WebResponse_masechet;
 
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface WebService {

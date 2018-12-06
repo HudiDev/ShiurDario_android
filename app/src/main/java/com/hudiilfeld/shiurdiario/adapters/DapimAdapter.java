@@ -10,12 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.adapters.DapimAdapter.DafViewHolder;
-import com.hudiilfeld.shiurdiario.models.DafGemara;
+import com.hudiilfeld.shiurdiario.models.Daf;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.MainActivity;
 
 import java.util.List;
@@ -27,11 +26,11 @@ public class DapimAdapter extends Adapter<DafViewHolder> {
     public static final String DAF_DATE = "dafDate";
 
 
-    private List<DafGemara> data;
+    private List<Daf> data;
     private LayoutInflater inflater;
     Context mContext;
 
-    public DapimAdapter(Context context, List<DafGemara> data) {
+    public DapimAdapter(Context context, List<Daf> data) {
         this.data = data;
         inflater = LayoutInflater.from(context);
         mContext = context;
@@ -46,7 +45,7 @@ public class DapimAdapter extends Adapter<DafViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull DafViewHolder holder, int position) {
-        DafGemara daf = data.get(position);
+        Daf daf = data.get(position);
         holder.dafNameTV.setText(daf.getMasechet() + " " + daf.getDaf());
         holder.durationTV.setText("Duration: " + daf.getDuration());
         holder.dateTV.setText(daf.getDate());

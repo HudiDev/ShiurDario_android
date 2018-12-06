@@ -1,14 +1,14 @@
 package com.hudiilfeld.shiurdiario.models;
 
-public class DafGemara {
+public class Daf {
 
     private String masechet, daf, date, duration,
             hebmonth, hebdate, hebyear, prefix, sqldate;
 
 
-    public DafGemara(String masechet, String daf, String date, String duration,
-                     String hebmonth, String hebdate, String hebyear,
-                     String prefix, String sqldate) {
+    public Daf(String masechet, String daf, String date, String duration,
+               String hebmonth, String hebdate, String hebyear,
+               String prefix, String sqldate) {
         this.masechet = masechet;
         this.daf = daf;
         this.date = date;
