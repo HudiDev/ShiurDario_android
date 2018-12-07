@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".views.daf_hayomi.PreviousDapim_tab">
+    tools:context=".views.daf_hayomi.tabs.PreviousDapim_tab">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/previousDapimRV"

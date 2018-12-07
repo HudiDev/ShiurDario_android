@@ -1,9 +1,12 @@
-package com.hudiilfeld.shiurdiario.views.daf_hayomi;
+package com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs;
 
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,22 +14,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.hudiilfeld.shiurdiario.App;
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.adapters.DapimAdapter;
 import com.hudiilfeld.shiurdiario.models.Daf;
 import com.hudiilfeld.shiurdiario.models.WebResponse_daf;
-import com.hudiilfeld.shiurdiario.view_models.WebService;
+import com.hudiilfeld.shiurdiario.repositories.DapimRepo;
+import com.hudiilfeld.shiurdiario.view_models.DapimViewModel;
+import com.hudiilfeld.shiurdiario.view_models.SuperViewModel;
+import com.hudiilfeld.shiurdiario.view_models.viewModelProvides.ViewModelFactory;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.Retrofit.Builder;
-import retrofit2.converter.gson.GsonConverterFactory;
+import javax.inject.Inject;
 
 
 /**
@@ -34,8 +35,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class PreviousDapim_tab extends Fragment {
 
-    RecyclerView previousDapimRV;
+    RecyclerView dapimRV;
     List<Daf> data;
+    @Inject ViewModelFactory<DapimRepo> factory;
+    @Inject DapimRepo dapimRepo;
+    DapimViewModel viewModel;
+
+
 
     private PreviousDapim_tab.OnFragmentInteractionListener mListener;
 
@@ -64,41 +70,26 @@ public class PreviousDapim_tab extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_tab3, container, false);
+        ((App)getActivity().getApplication()).getmAppComponent().inject(this);
 
-        previousDapimRV = v.findViewById(R.id.previousDapimRV);
+        dapimRV = v.findViewById(R.id.previousDapimRV);
 
-        previousDapimRV.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        Retrofit.Builder builder = new Builder()
-                .baseUrl("http://ws.shiurdiario.com")
-                .addConverterFactory(GsonConverterFactory.create());
-
-        Retrofit retrofit = builder.build();
-
-        WebService client = retrofit.create(WebService.class);
+        dapimRV.setLayoutManager(new LinearLayoutManager(getContext()));
 
         String currentDate = getArguments().getString(CURRENT_DATE);
 
-        Call<WebResponse_daf> call = client.getDapim(currentDate);
+        factory = new ViewModelFactory<>(dapimRepo);
+        viewModel = ViewModelProviders.of(this, factory).get(DapimViewModel.class);
 
-        call.enqueue(new Callback<WebResponse_daf>() {
+        viewModel.init(currentDate);
+        viewModel.getData().observe(this, new Observer<WebResponse_daf>() {
             @Override
-            public void onResponse(Call<WebResponse_daf> call, Response<WebResponse_daf> response) {
-                WebResponse_daf jsonData = response.body();
-                data = jsonData.getPast_pages();
-                Log.d("jsonDataSize:", "" + data.size());
-                if (getActivity() != null) {
-                    previousDapimRV.setAdapter(new DapimAdapter(getActivity(), data));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<WebResponse_daf> call, Throwable t) {
-                Toast.makeText(getContext(), "error :( Something went wrong.", Toast.LENGTH_SHORT).show();
+            public void onChanged(@Nullable WebResponse_daf webResponse_daf) {
+                dapimRV.setAdapter(new DapimAdapter(getActivity(), webResponse_daf.getPast_pages()));
             }
         });
+
 
         return v;
     }

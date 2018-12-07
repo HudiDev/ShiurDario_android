@@ -1,4 +1,4 @@
-package com.hudiilfeld.shiurdiario.view_models;
+package com.hudiilfeld.shiurdiario.models;
 
 import com.hudiilfeld.shiurdiario.models.WebResponse_daf;
 import com.hudiilfeld.shiurdiario.models.WebResponse_masechet;

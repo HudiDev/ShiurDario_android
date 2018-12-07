@@ -18,20 +18,7 @@ import android.widget.ImageView;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.hudiilfeld.shiurdiario.R;
-import com.hudiilfeld.shiurdiario.Utils;
-import com.hudiilfeld.shiurdiario.models.WebResponse_masechet;
-import com.hudiilfeld.shiurdiario.view_models.WebService;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.MainActivity;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.Retrofit.Builder;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
 

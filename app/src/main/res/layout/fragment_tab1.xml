@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
-    tools:context=".views.daf_hayomi.Video_tab">
+    tools:context=".views.daf_hayomi.tabs.Video_tab">
 
     <VideoView
         android:id="@+id/videoView"

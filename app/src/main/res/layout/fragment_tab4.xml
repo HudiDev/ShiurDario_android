@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.daf_hayomi.AllMasechtot_tab">
+    tools:context=".views.daf_hayomi.tabs.AllMasechtot_tab">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/masechetotRV"

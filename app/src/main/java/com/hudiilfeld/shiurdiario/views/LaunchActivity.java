@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.Utils;
 import com.hudiilfeld.shiurdiario.models.WebResponse_masechet;
-import com.hudiilfeld.shiurdiario.view_models.WebService;
+import com.hudiilfeld.shiurdiario.models.WebService;
 
 import retrofit2.Call;
 import retrofit2.Callback;

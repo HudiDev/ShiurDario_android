@@ -6,9 +6,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.hudiilfeld.shiurdiario.Utils;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.GemaraText_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.PreviousDapim_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Video_tab;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 

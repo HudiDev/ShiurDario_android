@@ -1,4 +1,4 @@
-package com.hudiilfeld.shiurdiario.views.daf_hayomi;
+package com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs;
 
 
 import android.content.Context;
