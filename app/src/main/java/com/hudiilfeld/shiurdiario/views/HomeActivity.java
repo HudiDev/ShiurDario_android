@@ -18,6 +18,7 @@ import android.widget.ImageView;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.hudiilfeld.shiurdiario.R;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.DedicationTab;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.MainActivity;
 
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
@@ -114,6 +115,10 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.shiurim) {
 
         } else if (id == R.id.dedicatorias) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.drawer_layout, new DedicationTab())
+                    .commit();
 
         } else if (id == R.id.contato) {
 

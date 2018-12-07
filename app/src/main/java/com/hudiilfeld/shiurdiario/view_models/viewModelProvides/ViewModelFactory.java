@@ -7,9 +7,11 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.hudiilfeld.shiurdiario.repositories.DapimRepo;
+import com.hudiilfeld.shiurdiario.repositories.DedicationRepo;
 import com.hudiilfeld.shiurdiario.repositories.MasechtotRepo;
 import com.hudiilfeld.shiurdiario.repositories.SuperRepo;
 import com.hudiilfeld.shiurdiario.view_models.DapimViewModel;
+import com.hudiilfeld.shiurdiario.view_models.DedicationViewModel;
 import com.hudiilfeld.shiurdiario.view_models.MasechtotViewModel;
 
 import javax.inject.Inject;
@@ -38,6 +40,13 @@ public class ViewModelFactory<T extends SuperRepo> implements ViewModelProvider.
                 return (VM) new MasechtotViewModel((MasechtotRepo) repository);
             }
             throw new ClassCastException("repository ain't instance of MasechtotRepo");
+        }
+        if (modelClass.isAssignableFrom(DedicationViewModel.class)) {
+            if (repository instanceof DedicationRepo) {
+                return (VM) new DedicationViewModel((DedicationRepo) repository);
+            }
+            throw new ClassCastException("repository ain't instance of DedicationRepo");
+
         }
         return null;
     }
