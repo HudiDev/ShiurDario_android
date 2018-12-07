@@ -87,35 +87,6 @@ public class AllMasechtot_tab extends Fragment {
             }
         });
 
-//        Retrofit.Builder builder = new Builder()
-//                .baseUrl("http://ws.shiurdiario.com")
-//                .addConverterFactory(GsonConverterFactory.create());
-//
-//        Retrofit retrofit = builder.build();
-//
-//        WebService client = retrofit.create(WebService.class);
-//
-//        String currentDate = getArguments().getString(CURRENT_DATE);
-//
-//        Call<WebResponse_masechet> call = client.getMasechtot(currentDate);
-//
-//        call.enqueue(new Callback<WebResponse_masechet>() {
-//            @Override
-//            public void onResponse(Call<WebResponse_masechet> call, Response<WebResponse_masechet> response) {
-//                WebResponse_masechet jsonData = response.body();
-//                data = jsonData.getD().getMasechtot();
-//                if (getContext() != null)
-//                    masechetotRV.setAdapter(new MesechtotAdapter(getContext(), data));
-//            }
-//
-//            @Override
-//            public void onFailure(Call<WebResponse_masechet> call, Throwable t) {
-//                Log.d("FAILURE IS: ", t.getMessage());
-//                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        });
-
-
         return v;
     }
 

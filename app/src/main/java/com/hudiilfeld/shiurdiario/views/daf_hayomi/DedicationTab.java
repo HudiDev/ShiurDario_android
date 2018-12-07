@@ -33,11 +33,6 @@ public class DedicationTab extends Fragment {
     DedicationViewModel viewModel;
 
 
-    public DedicationTab() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,16 +46,17 @@ public class DedicationTab extends Fragment {
         factory = new ViewModelFactory<>(repository);
         viewModel = ViewModelProviders.of(this, factory).get(DedicationViewModel.class);
 
-
         viewModel.init(Utils.getCurrentDate());
 
         viewModel.getLiveData().observe(this, new Observer<WebResponse_masechet>() {
             @Override
             public void onChanged(@Nullable WebResponse_masechet webResponse_masechet) {
-                dedicationTV.setText(webResponse_masechet.getD().getDedication());
+
+                String name = webResponse_masechet.getD().getDedication().split(":")[1];
+
+                dedicationTV.setText(name);
             }
         });
-
 
         return v;
     }
