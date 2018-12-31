@@ -106,8 +106,6 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.home) {
 
-        } else if (id == R.id.quem_somos) {
-
         } else if (id == R.id.daf_hayomi) {
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra(PREFIX, prefix);
