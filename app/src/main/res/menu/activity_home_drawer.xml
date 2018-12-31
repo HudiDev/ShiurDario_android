@@ -6,27 +6,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home"
             android:title="HOME" />
         <item
-            android:id="@+id/quem_somos"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="QUEM SOMOS" />
-        <item
             android:id="@+id/daf_hayomi"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_daf_hayomi"
             android:title="DAF HAYOMI" />
         <item
             android:id="@+id/shiurim"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_shiurim"
             android:title="SHIURIM" />
         <item
             android:id="@+id/dedicatorias"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/ic_dedication"
             android:title="DEDICATORIAS" />
         <item
             android:id="@+id/contato"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/ic_contact"
             android:title="CONTATO" />
     </group>
 

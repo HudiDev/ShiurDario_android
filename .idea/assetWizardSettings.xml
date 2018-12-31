@@ -28,8 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_chevron_right_black_24dp" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../masechet_icon.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_contact" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../icons_dugmaot2 copy 3.svg" />
                           </map>
                         </option>
                       </PersistentState>
