@@ -10,4 +10,9 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="home_paragraph_1">O site que traz a vocês a sabedoria dos nossos Sábios da Mishná e da Guemará em português,em uma linguagem atual e acessível.Nossos shiurim são transmitidos de forma clara e concisa, aproximando a Torá a cada um de nós.Oferecemos também a escolha de shiur em formato vídeo ou áudio, ambos em alta qualidade para vocês assistirem ou baixarem para seus aparelhos.Na comodidade de sua casa,no carro ou no trabalho, nunca foi tão fácil estudar o Judaismo e sua Sabedoria milenar, no Brasil e no mundo."</string>
+    <string name="home_paragraph_2">Nossos Sábios disseram: אֵין לְךָ בֶּן חוֹרִין אֶלָּא מִי שֶׁעוֹסֵק בְּתַלְמוּד תּוֹרָה" - אבות, ו:ב""Não existe alguém mais livre do que aquele que estuda a Torá" (Pirkei Avot, 6:2).Venha, então, conosco estudar os diamantes da Torá em português, aprender novas idéias e sentir-se mais livre do que nunca.</string>
+    <string name="home_paragraph_3">Dedique um ou mais shiurim ao seus entes queridos.Para elevação da alma, a cura plena ou o sucesso pessoal.Clique AQUI para mais informações.</string>
 </resources>
