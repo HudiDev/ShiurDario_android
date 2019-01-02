@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragmentContainer"
@@ -10,81 +10,94 @@
     tools:context=".views.HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
-    <LinearLayout
+    <ScrollView
+        android:orientation="vertical"
+        android:id="@+id/Containerrrr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:orientation="vertical">
+        >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="40dp"
-            android:text="Shiur Diario"
-            android:textSize="40dp"
-            android:background="#acbaa7"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:textColor="#000"/>
-
-        <TextView
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:background="@drawable/title_border"
-            android:text="Shiur Diário - a nossa meta"
-            android:textSize="17sp"
-            android:textColor="#000"
-            />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:lineSpacingMultiplier="1.3"
-            android:text="@string/home_paragraph_1"
-            android:textColor="#000" />
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="200dp"
-            android:layout_height="4dp"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="center_horizontal"
-            android:background="#000"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="40dp"
+                android:text="Shiur Diario"
+                android:textSize="40dp"
+                android:background="#acbaa7"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textColor="#000"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:lineSpacingMultiplier="1.3"
-            android:text="@string/home_paragraph_2"
-            android:textColor="#000"/>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:background="@drawable/title_border"
+                android:text="Shiur Diário - a nossa meta"
+                android:textSize="17sp"
+                android:textColor="#000"
+                />
 
-        <TextView
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:background="@drawable/title_border"
-            android:text="Dedicatorias"
-            android:textSize="17sp"
-            android:textColor="#000"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.3"
+                android:text="@string/home_paragraph_1"
+                android:textColor="#000" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:lineSpacingMultiplier="1.3"
-            android:text="@string/home_paragraph_3"
-            android:gravity="center"
-            android:textColor="#000"/>
+            <View
+                android:layout_width="200dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#000"/>
 
-    </LinearLayout>
-</ScrollView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.3"
+                android:text="@string/home_paragraph_2"
+                android:textColor="#000"/>
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:background="@drawable/title_border"
+                android:text="Dedicatorias"
+                android:textSize="17sp"
+                android:textColor="#000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:lineSpacingMultiplier="1.3"
+                android:text="@string/home_paragraph_3"
+                android:gravity="center"
+                android:textColor="#000"/>
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

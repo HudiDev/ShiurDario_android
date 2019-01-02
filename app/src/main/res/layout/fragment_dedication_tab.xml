@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#fff"
     tools:context=".views.daf_hayomi.DedicationTab">
 
     <!-- TODO: Update blank fragment layout -->
@@ -14,6 +13,7 @@
         android:id="@+id/dedicationTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#fff"
         android:text="@string/hello_blank_fragment" />
 
 </LinearLayout>

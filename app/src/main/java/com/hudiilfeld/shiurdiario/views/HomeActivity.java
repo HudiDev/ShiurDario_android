@@ -117,7 +117,7 @@ public class HomeActivity extends AppCompatActivity
 
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.drawer_layout,
+                    .replace(R.id.fragmentContainer,
                             AllMasechtot_tab.newInstance(Utils.getCurrentDate()))
                     .addToBackStack(null)
                     .commit();
@@ -125,7 +125,8 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.dedicatorias) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.drawer_layout, new DedicationTab())
+                    .replace(R.id.fragmentContainer, new DedicationTab())
+                    .addToBackStack(null)
                     .commit();
 
         } else if (id == R.id.contato) {
