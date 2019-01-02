@@ -56,7 +56,7 @@ public class GemaraText_tab extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View v = inflater.inflate(R.layout.fragment_tab2, container, false);
+        View v = inflater.inflate(R.layout.fragment_gemara_text, container, false);
 
         prefix = getArguments().getString(PREFIX);
 

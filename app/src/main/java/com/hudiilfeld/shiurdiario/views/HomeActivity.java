@@ -1,6 +1,7 @@
 package com.hudiilfeld.shiurdiario.views;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,25 +19,27 @@ import android.widget.ImageView;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.hudiilfeld.shiurdiario.R;
+import com.hudiilfeld.shiurdiario.Utils;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.DedicationTab;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.MainActivity;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab.OnFragmentInteractionListener;
 
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OnFragmentInteractionListener {
 
     public static final String TAG = "prefixAccepted";
 
     ImageView imageView;
-    PDFView pdfView;
     String prefix;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         prefix = getIntent().getStringExtra(PREFIX);
@@ -112,6 +115,13 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.shiurim) {
 
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.drawer_layout,
+                            AllMasechtot_tab.newInstance(Utils.getCurrentDate()))
+                    .addToBackStack(null)
+                    .commit();
+
         } else if (id == R.id.dedicatorias) {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -128,5 +138,8 @@ public class HomeActivity extends AppCompatActivity
     }
 
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
+    }
 }

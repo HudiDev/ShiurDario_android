@@ -2,7 +2,7 @@ package com.hudiilfeld.shiurdiario.models;
 
 public class Daf {
 
-    private String masechet, daf, date, duration,
+    private String masechet, daf, date, dafdate, duration,
             hebmonth, hebdate, hebyear, prefix, sqldate;
 
 
@@ -16,6 +16,17 @@ public class Daf {
         this.hebmonth = hebmonth;
         this.hebdate = hebdate;
         this.hebyear = hebyear;
+        this.prefix = prefix;
+        this.sqldate = sqldate;
+    }
+
+    public Daf(String masechet, String daf, String dafdate,
+               String duration, String prefix, String sqldate)  {
+
+        this.masechet = masechet;
+        this.daf = daf;
+        this.dafdate = dafdate;
+        this.duration = duration;
         this.prefix = prefix;
         this.sqldate = sqldate;
     }
@@ -54,5 +65,13 @@ public class Daf {
 
     public String getSqldate() {
         return sqldate;
+    }
+
+    public String getDafdate() {
+        return dafdate;
+    }
+
+    public void setDafdate(String dafdate) {
+        this.dafdate = dafdate;
     }
 }

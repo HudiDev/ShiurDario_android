@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.daf_hayomi.tabs.AllMasechtot_tab">
+    android:gravity="center"
+    android:background="#fff"
+    tools:context=".views.daf_hayomi.tabs.Dapim_tab">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/masechetotRV"
+        android:id="@+id/previousDapimRV"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
 
-</FrameLayout>
+</LinearLayout>

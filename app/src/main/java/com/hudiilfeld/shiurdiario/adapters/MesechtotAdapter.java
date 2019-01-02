@@ -1,27 +1,34 @@
 package com.hudiilfeld.shiurdiario.adapters;
 
-import android.content.Context;
+
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hudiilfeld.shiurdiario.R;
+import com.hudiilfeld.shiurdiario.Utils;
 import com.hudiilfeld.shiurdiario.adapters.MesechtotAdapter.MesechtaViewHolder;
 import com.hudiilfeld.shiurdiario.models.Masechta;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
 
 import java.util.List;
 
 public class MesechtotAdapter extends Adapter<MesechtaViewHolder>{
 
-    Context context;
-    List<Masechta> data;
-    LayoutInflater inflater;
+    private FragmentActivity context;
+    private List<Masechta> data;
+    private LayoutInflater inflater;
 
-    public MesechtotAdapter(Context context, List<Masechta> data) {
+    public MesechtotAdapter(FragmentActivity context, List<Masechta> data) {
         this.context = context;
         this.data = data;
         inflater = LayoutInflater.from(context);
@@ -53,6 +60,20 @@ public class MesechtotAdapter extends Adapter<MesechtaViewHolder>{
         public MesechtaViewHolder(View itemView) {
             super(itemView);
             masechetTV = itemView.findViewById(R.id.masechetTV);
+
+
+            itemView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("wedfwa", "fvsfsfvsfvs");
+                    context.getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.mainContainer,
+                                    Dapim_tab.newInstance(Utils.getCurrentDate(),
+                                            data.get(getAdapterPosition())
+                                                    .getMasechet()))
+                            .addToBackStack(null).commit();
+                }
+            });
         }
     }
 }

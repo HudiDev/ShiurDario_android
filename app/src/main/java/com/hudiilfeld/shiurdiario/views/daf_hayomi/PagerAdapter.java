@@ -8,16 +8,16 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.hudiilfeld.shiurdiario.Utils;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.GemaraText_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.PreviousDapim_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Video_tab;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
-    String prefix;
-    int numOfTabs;
-    String dafDate;
+    private String prefix;
+    private String dafDate;
+    private int numOfTabs;
 
-
+    
     public PagerAdapter(FragmentManager fm, int numOfTabs, String prefix,  @Nullable String dafDate) {
         super(fm);
         this.numOfTabs = numOfTabs;
@@ -38,7 +38,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return GemaraText_tab.newInstance(prefix);
             case 2:
-                return PreviousDapim_tab.newInstance(dafDate);
+                return Dapim_tab.newInstance(dafDate, null);
             case 3:
                 return AllMasechtot_tab.newInstance(dafDate);
 //            case 4:

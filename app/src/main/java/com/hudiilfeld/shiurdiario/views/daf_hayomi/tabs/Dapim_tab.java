@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +18,13 @@ import com.hudiilfeld.shiurdiario.App;
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.adapters.DapimAdapter;
 import com.hudiilfeld.shiurdiario.models.Daf;
-import com.hudiilfeld.shiurdiario.models.WebResponse_daf;
+import com.hudiilfeld.shiurdiario.models.WebResponse_previousDaf;
+import com.hudiilfeld.shiurdiario.models.WebResponse_shiurDaf;
 import com.hudiilfeld.shiurdiario.repositories.DapimRepo;
 import com.hudiilfeld.shiurdiario.view_models.DapimViewModel;
-import com.hudiilfeld.shiurdiario.view_models.SuperViewModel;
 import com.hudiilfeld.shiurdiario.view_models.viewModelProvides.ViewModelFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -33,7 +33,7 @@ import javax.inject.Inject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PreviousDapim_tab extends Fragment {
+public class Dapim_tab extends Fragment {
 
     RecyclerView dapimRV;
     List<Daf> data;
@@ -43,14 +43,17 @@ public class PreviousDapim_tab extends Fragment {
 
 
 
-    private PreviousDapim_tab.OnFragmentInteractionListener mListener;
+    private Dapim_tab.OnFragmentInteractionListener mListener;
 
     public static final String CURRENT_DATE = "currentDate";
+    public static final String MASECHET = "masechet";
 
-    public static PreviousDapim_tab newInstance(String currentDate) {
-        PreviousDapim_tab fragment = new PreviousDapim_tab();
+    public static Dapim_tab newInstance(String currentDate,
+                                        @Nullable String masechet) {
+        Dapim_tab fragment = new Dapim_tab();
         Bundle args = new Bundle();
         args.putString(CURRENT_DATE, currentDate);
+        args.putString(MASECHET, masechet);
         fragment.setArguments(args);
         return fragment;
     }
@@ -58,8 +61,8 @@ public class PreviousDapim_tab extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof PreviousDapim_tab.OnFragmentInteractionListener) {
-            mListener = (PreviousDapim_tab.OnFragmentInteractionListener) context;
+        if (context instanceof Dapim_tab.OnFragmentInteractionListener) {
+            mListener = (Dapim_tab.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -70,7 +73,7 @@ public class PreviousDapim_tab extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_tab3, container, false);
+        View v = inflater.inflate(R.layout.fragment_dapim, container, false);
         ((App)getActivity().getApplication()).getmAppComponent().inject(this);
 
         dapimRV = v.findViewById(R.id.previousDapimRV);
@@ -82,14 +85,31 @@ public class PreviousDapim_tab extends Fragment {
         factory = new ViewModelFactory<>(dapimRepo);
         viewModel = ViewModelProviders.of(this, factory).get(DapimViewModel.class);
 
-        viewModel.init(currentDate);
-        viewModel.getData().observe(this, new Observer<WebResponse_daf>() {
-            @Override
-            public void onChanged(@Nullable WebResponse_daf webResponse_daf) {
-                dapimRV.setAdapter(new DapimAdapter(getActivity(), webResponse_daf.getPast_pages()));
-            }
-        });
+        final DapimAdapter adapter = new DapimAdapter(getActivity(), new ArrayList<Daf>());
+        dapimRV.setAdapter(adapter);
 
+
+        if (getArguments().getString(MASECHET) == null) {
+
+            viewModel.initPreviousDapim(currentDate);
+            viewModel.getPreviousDapim().observe(this, new Observer<WebResponse_previousDaf>() {
+                @Override
+                public void onChanged(@Nullable WebResponse_previousDaf webResponse_previousDaf) {
+                    adapter.setData(webResponse_previousDaf.getPast_pages());
+                }
+            });
+
+        } else {
+
+            viewModel.initShiurimDapim(getArguments().getString(MASECHET), 0);
+            viewModel.getShiurDapim().observe(this, new Observer<WebResponse_shiurDaf>() {
+                @Override
+                public void onChanged(@Nullable WebResponse_shiurDaf webResponse_shiurDaf) {
+                    adapter.setData(webResponse_shiurDaf.getDapim());
+                    //dapimRV.setAdapter(new DapimAdapter(getActivity(), webResponse_shiurDaf.getDapim()));
+                }
+            });
+        }
 
         return v;
     }

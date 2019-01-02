@@ -9,18 +9,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.hudiilfeld.shiurdiario.App;
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.adapters.MesechtotAdapter;
 import com.hudiilfeld.shiurdiario.models.Masechta;
 import com.hudiilfeld.shiurdiario.models.WebResponse_masechet;
-import com.hudiilfeld.shiurdiario.models.WebService;
 import com.hudiilfeld.shiurdiario.repositories.MasechtotRepo;
 import com.hudiilfeld.shiurdiario.view_models.MasechtotViewModel;
 import com.hudiilfeld.shiurdiario.view_models.viewModelProvides.ViewModelFactory;
@@ -28,13 +25,6 @@ import com.hudiilfeld.shiurdiario.view_models.viewModelProvides.ViewModelFactory
 import java.util.List;
 
 import javax.inject.Inject;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.Retrofit.Builder;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class AllMasechtot_tab extends Fragment {
@@ -68,7 +58,7 @@ public class AllMasechtot_tab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_tab4, container, false);
+        View v = inflater.inflate(R.layout.fragment_masechtot, container, false);
         ((App)getActivity().getApplication()).getmAppComponent().inject(this);
 
         String currentDate = getArguments().getString(CURRENT_DATE);
@@ -83,7 +73,7 @@ public class AllMasechtot_tab extends Fragment {
         viewModel.getliveData().observe(this, new Observer<WebResponse_masechet>() {
             @Override
             public void onChanged(@Nullable WebResponse_masechet webResponse_masechet) {
-                masechetotRV.setAdapter(new MesechtotAdapter(getContext(), webResponse_masechet.getD().getMasechtot()));
+                masechetotRV.setAdapter(new MesechtotAdapter(getActivity(), webResponse_masechet.getD().getMasechtot()));
             }
         });
 

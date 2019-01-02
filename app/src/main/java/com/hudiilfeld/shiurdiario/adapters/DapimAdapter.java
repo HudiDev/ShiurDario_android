@@ -3,9 +3,11 @@ package com.hudiilfeld.shiurdiario.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,9 +15,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hudiilfeld.shiurdiario.R;
+import com.hudiilfeld.shiurdiario.Utils;
 import com.hudiilfeld.shiurdiario.adapters.DapimAdapter.DafViewHolder;
 import com.hudiilfeld.shiurdiario.models.Daf;
+import com.hudiilfeld.shiurdiario.models.WebResponse_previousDaf;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.MainActivity;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
 
 import java.util.List;
 
@@ -28,12 +33,17 @@ public class DapimAdapter extends Adapter<DafViewHolder> {
 
     private List<Daf> data;
     private LayoutInflater inflater;
-    Context mContext;
+    FragmentActivity mContext;
 
-    public DapimAdapter(Context context, List<Daf> data) {
+    public DapimAdapter(FragmentActivity context, List<Daf> data) {
         this.data = data;
         inflater = LayoutInflater.from(context);
         mContext = context;
+    }
+
+    public void setData(List<Daf> data) {
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -84,6 +94,16 @@ public class DapimAdapter extends Adapter<DafViewHolder> {
                     intent.putExtra(PREFIX, prefix);
                     intent.putExtra(DAF_DATE, dafDate);
                     mContext.startActivity(intent);
+
+//                    mContext.getSupportFragmentManager()
+//                            .beginTransaction()
+//                            .add(R.id.viewPager,
+//                                    Dapim_tab.newInstance(Utils.getCurrentDate(),
+//                                            data.get(getAdapterPosition())
+//                                                    .getMasechet()))
+//                            .commit();
+
+                    Log.d("wedd", "wdeccedcdc");
                 }
             });
         }
