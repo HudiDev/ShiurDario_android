@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hudiilfeld.shiurdiario.R;
@@ -72,7 +73,7 @@ public class DapimAdapter extends Adapter<DafViewHolder> {
 
     class DafViewHolder extends RecyclerView.ViewHolder{
 
-        CardView parentView;
+        RelativeLayout parentView;
         TextView dafNameTV, durationTV, dateTV, hebMonthDayTV, hebYearTV;
 
         public DafViewHolder(View itemView) {
