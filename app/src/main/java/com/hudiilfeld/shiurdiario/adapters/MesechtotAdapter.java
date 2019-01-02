@@ -18,6 +18,7 @@ import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.Utils;
 import com.hudiilfeld.shiurdiario.adapters.MesechtotAdapter.MesechtaViewHolder;
 import com.hudiilfeld.shiurdiario.models.Masechta;
+import com.hudiilfeld.shiurdiario.views.HomeActivity;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
 
 import java.util.List;
@@ -57,17 +58,28 @@ public class MesechtotAdapter extends Adapter<MesechtaViewHolder>{
 
         TextView masechetTV;
 
-        public MesechtaViewHolder(View itemView) {
+        public MesechtaViewHolder(final View itemView) {
             super(itemView);
             masechetTV = itemView.findViewById(R.id.masechetTV);
+
 
 
             itemView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    int id;
+
+                    if (context instanceof HomeActivity) {
+                        Log.d("TAG", "coming from home activity");
+                        id = R.id.fragmentContainer;
+                    } else {
+                        Log.d("TAG", "coming from daf-hayomi activity");
+                        id = R.id.mainContainer;
+                    }
                     Log.d("wedfwa", "fvsfsfvsfvs");
                     context.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.mainContainer,
+                            .replace(id,
                                     Dapim_tab.newInstance(Utils.getCurrentDate(),
                                             data.get(getAdapterPosition())
                                                     .getMasechet()))

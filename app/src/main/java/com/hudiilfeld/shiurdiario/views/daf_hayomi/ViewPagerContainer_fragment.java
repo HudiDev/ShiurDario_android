@@ -26,9 +26,7 @@ import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ViewPagerContainer_fragment extends Fragment implements Video_tab.OnFragmentInteractionListener,
-        GemaraText_tab.OnFragmentInteractionListener, Dapim_tab.OnFragmentInteractionListener,
-        AllMasechtot_tab.OnFragmentInteractionListener{
+public class ViewPagerContainer_fragment extends Fragment{
 
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -61,7 +59,11 @@ public class ViewPagerContainer_fragment extends Fragment implements Video_tab.O
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
 
         viewPager = v.findViewById(R.id.viewPager);
-        pagerAdapter = new PagerAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount(), getArguments().getString(PREFIX),  getArguments().getString(DAF_DATE));
+
+        pagerAdapter = new PagerAdapter(getActivity().getSupportFragmentManager(),
+                tabLayout.getTabCount(),
+                getArguments().getString(PREFIX),  getArguments().getString(DAF_DATE));
+
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayoutOnPageChangeListener(tabLayout));
 
@@ -79,11 +81,6 @@ public class ViewPagerContainer_fragment extends Fragment implements Video_tab.O
 
 
         return v;
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
     }
 
 }

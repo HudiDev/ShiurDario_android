@@ -24,11 +24,16 @@ import com.hudiilfeld.shiurdiario.views.daf_hayomi.DedicationTab;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.MainActivity;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab.OnFragmentInteractionListener;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.GemaraText_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Video_tab;
 
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        Dapim_tab.OnFragmentInteractionListener,
+        AllMasechtot_tab.OnFragmentInteractionListener {
 
     public static final String TAG = "prefixAccepted";
 
