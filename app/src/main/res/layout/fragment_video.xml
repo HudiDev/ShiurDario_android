@@ -3,14 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000"
+    android:background="#fff"
+
     tools:context=".views.daf_hayomi.tabs.Video_tab">
 
-    <VideoView
-        android:id="@+id/videoView"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/videoView"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:text="Chulin 27"
+            android:textColor="#000"
+            android:textSize="30sp" />
+
+
+       <com.hudiilfeld.shiurdiario.views.SquareVideoView
+           android:id="@+id/videoView"
+           android:layout_width="match_parent"
+           android:layout_height="420dp"
+           android:layout_centerVertical="true"
+           />
+
+    </LinearLayout>
 
 
     <Button

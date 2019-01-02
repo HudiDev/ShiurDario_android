@@ -17,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.VideoView;
 
 import com.hudiilfeld.shiurdiario.R;
+import com.hudiilfeld.shiurdiario.views.SquareVideoView;
 
 
 /**
@@ -24,7 +25,7 @@ import com.hudiilfeld.shiurdiario.R;
  */
 public class Video_tab extends Fragment {
 
-    VideoView videoView;
+    SquareVideoView videoView;
     Button btnPlay;
     ProgressBar progressBar;
     String prefix;
