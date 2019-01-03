@@ -16,6 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.Utils;
@@ -39,6 +41,9 @@ public class HomeActivity extends AppCompatActivity
     String prefix;
     String masechet, daf;
 
+    //ToolBar properties
+    TextView homeTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +55,8 @@ public class HomeActivity extends AppCompatActivity
         prefix = getIntent().getStringExtra(PREFIX);
         masechet = getIntent().getStringExtra(MASECHET);
         daf = getIntent().getStringExtra(DAF);
+
+        homeTitle = findViewById(R.id.homeTitle);
 
         Log.d(TAG, prefix);
 
@@ -105,6 +112,12 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.home) {
+            Intent intent = getIntent();
+            overridePendingTransition(0, 0);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            finish();
+            overridePendingTransition(0, 0);
+            startActivity(intent);
 
         } else if (id == R.id.daf_hayomi) {
             Intent intent = new Intent(this, DafHayomiActivity.class);
@@ -121,6 +134,8 @@ public class HomeActivity extends AppCompatActivity
                     .addToBackStack(null)
                     .commit();
 
+            homeTitle.setText("All Masechtot");
+
         } else if (id == R.id.dedicatorias) {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -128,8 +143,10 @@ public class HomeActivity extends AppCompatActivity
                     .addToBackStack(null)
                     .commit();
 
-        } else if (id == R.id.contato) {
+            homeTitle.setText("Dedicatorias");
 
+        } else if (id == R.id.contato) {
+            Toast.makeText(this, "Will be available in upcoming versions of the app", Toast.LENGTH_LONG).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
