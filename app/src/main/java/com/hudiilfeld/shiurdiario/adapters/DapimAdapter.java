@@ -20,6 +20,8 @@ import com.hudiilfeld.shiurdiario.views.daf_hayomi.DafHayomiActivity;
 
 import java.util.List;
 
+import static com.hudiilfeld.shiurdiario.views.LaunchActivity.DAF;
+import static com.hudiilfeld.shiurdiario.views.LaunchActivity.MASECHET;
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
 
 public class DapimAdapter extends Adapter<DafViewHolder> {
@@ -58,7 +60,7 @@ public class DapimAdapter extends Adapter<DafViewHolder> {
         holder.hebMonthDayTV.setText(daf.getHebmonth() + " " + daf.getHebdate());
         holder.hebYearTV.setText(daf.getHebyear());
 
-        holder.passPrefix(daf.getPrefix(), daf.getSqldate());
+        holder.passPrefix(daf.getPrefix(), daf.getSqldate(), daf.getMasechet(), daf.getDaf());
     }
 
     @Override
@@ -82,24 +84,16 @@ public class DapimAdapter extends Adapter<DafViewHolder> {
             parentView = itemView.findViewById(R.id.parentView);
         }
 
-        public void passPrefix(final String prefix, final String dafDate) {
+        public void passPrefix(final String prefix, final String dafDate, final String masechet, final String daf) {
             parentView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, DafHayomiActivity.class);
                     intent.putExtra(PREFIX, prefix);
                     intent.putExtra(DAF_DATE, dafDate);
+                    intent.putExtra(MASECHET, masechet);
+                    intent.putExtra(DAF, daf);
                     mContext.startActivity(intent);
-
-//                    mContext.getSupportFragmentManager()
-//                            .beginTransaction()
-//                            .add(R.id.viewPager,
-//                                    Dapim_fragment.newInstance(Utils.getCurrentDate(),
-//                                            data.get(getAdapterPosition())
-//                                                    .getMasechet()))
-//                            .commit();
-
-                    Log.d("wedd", "wdeccedcdc");
                 }
             });
         }

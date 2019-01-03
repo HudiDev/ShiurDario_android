@@ -24,6 +24,8 @@ import com.hudiilfeld.shiurdiario.views.daf_hayomi.DafHayomiActivity;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_fragment;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Masechtot_fragment;
 
+import static com.hudiilfeld.shiurdiario.views.LaunchActivity.DAF;
+import static com.hudiilfeld.shiurdiario.views.LaunchActivity.MASECHET;
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
 
 public class HomeActivity extends AppCompatActivity
@@ -35,6 +37,7 @@ public class HomeActivity extends AppCompatActivity
 
     ImageView imageView;
     String prefix;
+    String masechet, daf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,9 @@ public class HomeActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         prefix = getIntent().getStringExtra(PREFIX);
+        masechet = getIntent().getStringExtra(MASECHET);
+        daf = getIntent().getStringExtra(DAF);
+
         Log.d(TAG, prefix);
 
         imageView = findViewById(R.id.imageView);
@@ -102,6 +108,8 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.daf_hayomi) {
             Intent intent = new Intent(this, DafHayomiActivity.class);
             intent.putExtra(PREFIX, prefix);
+            intent.putExtra(MASECHET, masechet);
+            intent.putExtra(DAF, daf);
             startActivity(intent);
         } else if (id == R.id.shiurim) {
 

@@ -6,6 +6,8 @@ public class D {
 
     private String prefix;
     private List<Masechta> masechtot;
+    private String masechet;
+    private String daf;
 
     private String dedication;
 
@@ -37,5 +39,21 @@ public class D {
 
     public void setDedication(String dedication) {
         this.dedication = dedication;
+    }
+
+    public String getMasechet() {
+        return masechet;
+    }
+
+    public void setMasechet(String masechet) {
+        this.masechet = masechet;
+    }
+
+    public String getDaf() {
+        return daf;
+    }
+
+    public void setDaf(String daf) {
+        this.daf = daf;
     }
 }

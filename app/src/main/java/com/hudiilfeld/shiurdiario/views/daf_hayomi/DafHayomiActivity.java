@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_fragment;
@@ -16,6 +17,8 @@ import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.GemaraText_fragment;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Video_fragment;
 
 import static com.hudiilfeld.shiurdiario.adapters.DapimAdapter.DAF_DATE;
+import static com.hudiilfeld.shiurdiario.views.LaunchActivity.DAF;
+import static com.hudiilfeld.shiurdiario.views.LaunchActivity.MASECHET;
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
 
 public class DafHayomiActivity extends AppCompatActivity implements OnClickListener, Video_fragment.OnFragmentInteractionListener,
@@ -24,9 +27,10 @@ public class DafHayomiActivity extends AppCompatActivity implements OnClickListe
          {
 
 
-    String prefix, dafDate;
+    String prefix, dafDate, masechet, daf;
 
     //actionBar properties
+    TextView actionBarTitle;
     ImageView backBtnIV, homeBtnIV;
 
 
@@ -38,13 +42,19 @@ public class DafHayomiActivity extends AppCompatActivity implements OnClickListe
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar);
 
-        ImageView backBtnIV = findViewById(R.id.backBtnIV);
-        ImageView homeBtnIV = findViewById(R.id.homeBtnIV);
+        actionBarTitle = findViewById(R.id.actionBarTitle);
+        backBtnIV = findViewById(R.id.backBtnIV);
+        homeBtnIV = findViewById(R.id.homeBtnIV);
+
         backBtnIV.setOnClickListener(this);
         homeBtnIV.setOnClickListener(this);
 
         prefix = getIntent().getStringExtra(PREFIX);
         dafDate = getIntent().getStringExtra(DAF_DATE);
+        masechet = getIntent().getStringExtra(MASECHET);
+        daf = getIntent().getStringExtra(DAF);
+
+        actionBarTitle.setText(masechet + " " + daf);
 
         moveToFragment(prefix, dafDate);
 

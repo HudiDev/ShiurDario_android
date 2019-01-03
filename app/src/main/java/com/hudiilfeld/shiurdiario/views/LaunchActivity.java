@@ -23,6 +23,8 @@ public class LaunchActivity extends AppCompatActivity {
     ProgressBar progressBar;
 
     public static final String PREFIX = "prefix";
+    public static final String MASECHET = "masechet";
+    public static final String DAF = "daf";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +49,15 @@ public class LaunchActivity extends AppCompatActivity {
             public void onResponse(Call<WebResponse_masechet> call, Response<WebResponse_masechet> response) {
                 WebResponse_masechet jsonData = response.body();
                 progressBar.setVisibility(View.INVISIBLE);
+
                 String prefix = jsonData.getD().getPrefix();
+                String masechet = jsonData.getD().getMasechet();
+                String daf = jsonData.getD().getDaf();
+
                 Intent intent = new Intent(LaunchActivity.this, HomeActivity.class);
                 intent.putExtra(PREFIX, prefix);
+                intent.putExtra(MASECHET, masechet);
+                intent.putExtra(DAF, daf);
                 startActivity(intent);
             }
 

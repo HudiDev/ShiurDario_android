@@ -11,6 +11,7 @@
         app:srcCompat="@drawable/icons8_back_arrow" />
 
     <TextView
+        android:id="@+id/actionBarTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
