@@ -1,6 +1,7 @@
 package com.hudiilfeld.shiurdiario.views.daf_hayomi;
 
 import android.net.Uri;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -25,6 +26,9 @@ public class DafHayomiActivity extends AppCompatActivity implements Video_fragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daf_hayomi);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.action_bar);
 
         prefix = getIntent().getStringExtra(PREFIX);
         dafDate = getIntent().getStringExtra(DAF_DATE);
