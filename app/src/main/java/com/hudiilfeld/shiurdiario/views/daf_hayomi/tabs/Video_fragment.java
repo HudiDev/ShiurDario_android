@@ -1,10 +1,13 @@
 package com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnInfoListener;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,11 +15,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
+import android.widget.VideoView;
 
 import com.hudiilfeld.shiurdiario.R;
-import com.hudiilfeld.shiurdiario.views.SquareVideoView;
+import com.hudiilfeld.shiurdiario.Utils;
 
 
 /**
@@ -24,10 +29,13 @@ import com.hudiilfeld.shiurdiario.views.SquareVideoView;
  */
 public class Video_fragment extends Fragment {
 
-    SquareVideoView videoView;
+    VideoView videoView;
     Button btnPlay;
-    ProgressBar progressBar;
+    ProgressBar videoProgressBar;
     String prefix;
+
+
+    ImageView videoThumbnail;
 
     private static final String PREFIX = "prefix";
 
@@ -55,6 +63,7 @@ public class Video_fragment extends Fragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,20 +72,20 @@ public class Video_fragment extends Fragment {
 
         prefix = getArguments().getString(PREFIX);
 
-
+        videoThumbnail = v.findViewById(R.id.videoThumbnail);
         videoView = v.findViewById(R.id.videoView);
         btnPlay = v.findViewById(R.id.btnPlay);
-        progressBar = v.findViewById(R.id.progressBar);
+        videoProgressBar = v.findViewById(R.id.videoProgressBar);
 
         videoView.setOnInfoListener(new OnInfoListener() {
             @Override
             public boolean onInfo(MediaPlayer mp, int what, int extra) {
                 if (MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START == what) {
-                    progressBar.setVisibility(View.INVISIBLE);
+                    videoProgressBar.setVisibility(View.INVISIBLE);
                 } else if (MediaPlayer.MEDIA_INFO_BUFFERING_START == what) {
-                    progressBar.setVisibility(View.VISIBLE);
+                    videoProgressBar.setVisibility(View.VISIBLE);
                 } else if (MediaPlayer.MEDIA_INFO_BUFFERING_END == what) {
-                    progressBar.setVisibility(View.INVISIBLE);
+                    videoProgressBar.setVisibility(View.INVISIBLE);
                 }
                 return false;
             }
@@ -85,23 +94,62 @@ public class Video_fragment extends Fragment {
         btnPlay.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                videoThumbnail.setVisibility(View.GONE);
                 videoView.start();
                 btnPlay.setVisibility(View.INVISIBLE);
+
             }
         });
+
+
+        new LoadVideoThumbnail(getActivity()).execute("http://shiurdiario.com/media/video/" + prefix + ".mp4");
+
 
         String videoEndPoint = "http://shiurdiario.com/media/video/" + prefix + ".mp4";
         Uri videoUri = Uri.parse(videoEndPoint);
         videoView.setVideoURI(videoUri);
-
-
-
 
         MediaController vidController = new MediaController(getContext());
         vidController.setAnchorView(videoView);
         videoView.setMediaController(vidController);
 
         return v;
+    }
+
+
+    private class LoadVideoThumbnail extends AsyncTask<String, Void, Bitmap> {
+
+        Activity context;
+        Bitmap bitmap;
+
+        public LoadVideoThumbnail(Activity context) {
+            this.context = context;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            try {
+                bitmap = Utils.retrieveVideoFrameFromVideo(strings[0]);
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(final Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+            context.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    btnPlay.setVisibility(View.VISIBLE);
+                    videoProgressBar.setVisibility(View.INVISIBLE);
+                    videoThumbnail.setImageBitmap(bitmap);
+                    videoView.setVisibility(View.VISIBLE);
+                }
+            });
+
+        }
     }
 
     public void onButtonPressed(Uri uri) {
