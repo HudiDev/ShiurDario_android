@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.hudiilfeld.shiurdiario.App;
@@ -31,6 +32,7 @@ public class Dedication_fragment extends Fragment {
     @Inject ViewModelFactory<DedicationRepo> factory;
     @Inject DedicationRepo repository;
     DedicationViewModel viewModel;
+    ProgressBar progressBar;
 
 
     @Override
@@ -42,6 +44,7 @@ public class Dedication_fragment extends Fragment {
 
 
         dedicationTV = v.findViewById(R.id.dedicationTV);
+        progressBar = v.findViewById(R.id.dedicationProgressBar);
 
         factory = new ViewModelFactory<>(repository);
         viewModel = ViewModelProviders.of(this, factory).get(DedicationViewModel.class);
@@ -54,6 +57,8 @@ public class Dedication_fragment extends Fragment {
 
                 String name = webResponse_masechet.getD().getDedication().split(":")[1];
 
+                progressBar.setVisibility(View.GONE);
+                dedicationTV.setVisibility(View.VISIBLE);
                 dedicationTV.setText(name);
             }
         });
