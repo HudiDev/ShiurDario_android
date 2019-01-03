@@ -6,10 +6,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.hudiilfeld.shiurdiario.Utils;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.GemaraText_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Video_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Masechtot_fragment;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.GemaraText_fragment;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_fragment;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Video_fragment;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
@@ -34,13 +34,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return Video_tab.newInstance(prefix);
+                return Video_fragment.newInstance(prefix);
             case 1:
-                return GemaraText_tab.newInstance(prefix);
+                return GemaraText_fragment.newInstance(prefix);
             case 2:
-                return Dapim_tab.newInstance(dafDate, null);
+                return Dapim_fragment.newInstance(dafDate, null);
             case 3:
-                return AllMasechtot_tab.newInstance(dafDate);
+                return Masechtot_fragment.newInstance(dafDate);
 //            case 4:
 //                return new Tab5();
 //            case 5:

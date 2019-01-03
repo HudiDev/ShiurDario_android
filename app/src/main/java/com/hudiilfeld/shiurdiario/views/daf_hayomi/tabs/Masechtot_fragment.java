@@ -27,7 +27,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 
-public class AllMasechtot_tab extends Fragment {
+public class Masechtot_fragment extends Fragment {
 
     RecyclerView masechetotRV;
     List<Masechta> data;
@@ -40,8 +40,8 @@ public class AllMasechtot_tab extends Fragment {
     public static final String CURRENT_DATE = "currentDate";
 
 
-    public static AllMasechtot_tab newInstance(String currentDate) {
-        AllMasechtot_tab fragment = new AllMasechtot_tab();
+    public static Masechtot_fragment newInstance(String currentDate) {
+        Masechtot_fragment fragment = new Masechtot_fragment();
         Bundle args = new Bundle();
         args.putString(CURRENT_DATE, currentDate);
         fragment.setArguments(args);

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
 
-    tools:context=".views.daf_hayomi.tabs.Video_tab">
+    tools:context=".views.daf_hayomi.tabs.Video_fragment">
 
 
     <LinearLayout

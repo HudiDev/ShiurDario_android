@@ -33,7 +33,7 @@ import javax.inject.Inject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Dapim_tab extends Fragment {
+public class Dapim_fragment extends Fragment {
 
     RecyclerView dapimRV;
     List<Daf> data;
@@ -43,14 +43,14 @@ public class Dapim_tab extends Fragment {
 
 
 
-    private Dapim_tab.OnFragmentInteractionListener mListener;
+    private Dapim_fragment.OnFragmentInteractionListener mListener;
 
     public static final String CURRENT_DATE = "currentDate";
     public static final String MASECHET = "masechet";
 
-    public static Dapim_tab newInstance(String currentDate,
-                                        @Nullable String masechet) {
-        Dapim_tab fragment = new Dapim_tab();
+    public static Dapim_fragment newInstance(String currentDate,
+                                             @Nullable String masechet) {
+        Dapim_fragment fragment = new Dapim_fragment();
         Bundle args = new Bundle();
         args.putString(CURRENT_DATE, currentDate);
         args.putString(MASECHET, masechet);
@@ -61,8 +61,8 @@ public class Dapim_tab extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Dapim_tab.OnFragmentInteractionListener) {
-            mListener = (Dapim_tab.OnFragmentInteractionListener) context;
+        if (context instanceof Dapim_fragment.OnFragmentInteractionListener) {
+            mListener = (Dapim_fragment.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

@@ -24,7 +24,7 @@ import javax.inject.Inject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DedicationTab extends Fragment {
+public class Dedication_fragment extends Fragment {
 
     TextView dedicationTV;
 

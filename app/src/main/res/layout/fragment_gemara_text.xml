@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:gravity="center"
-    tools:context=".views.daf_hayomi.tabs.GemaraText_tab">
+    tools:context=".views.daf_hayomi.tabs.GemaraText_fragment">
 
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfViewer"

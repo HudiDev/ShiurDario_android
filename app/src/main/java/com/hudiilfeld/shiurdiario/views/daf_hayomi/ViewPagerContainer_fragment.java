@@ -1,7 +1,6 @@
 package com.hudiilfeld.shiurdiario.views.daf_hayomi;
 
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.TabLayout.OnTabSelectedListener;
@@ -13,10 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.hudiilfeld.shiurdiario.R;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.GemaraText_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Video_tab;
 
 import static com.hudiilfeld.shiurdiario.adapters.DapimAdapter.DAF_DATE;
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;

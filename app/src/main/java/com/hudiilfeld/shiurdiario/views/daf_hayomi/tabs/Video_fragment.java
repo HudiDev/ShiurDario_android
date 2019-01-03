@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
-import android.widget.VideoView;
 
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.views.SquareVideoView;
@@ -23,7 +22,7 @@ import com.hudiilfeld.shiurdiario.views.SquareVideoView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Video_tab extends Fragment {
+public class Video_fragment extends Fragment {
 
     SquareVideoView videoView;
     Button btnPlay;
@@ -32,11 +31,11 @@ public class Video_tab extends Fragment {
 
     private static final String PREFIX = "prefix";
 
-    private Video_tab.OnFragmentInteractionListener mListener;
+    private Video_fragment.OnFragmentInteractionListener mListener;
 
 
-    public static Video_tab newInstance(String prefix) {
-        Video_tab fragment = new Video_tab();
+    public static Video_fragment newInstance(String prefix) {
+        Video_fragment fragment = new Video_fragment();
         Bundle args = new Bundle();
         args.putString(PREFIX, prefix);
         fragment.setArguments(args);
@@ -47,8 +46,8 @@ public class Video_tab extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Video_tab.OnFragmentInteractionListener) {
-            mListener = (Video_tab.OnFragmentInteractionListener) context;
+        if (context instanceof Video_fragment.OnFragmentInteractionListener) {
+            mListener = (Video_fragment.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

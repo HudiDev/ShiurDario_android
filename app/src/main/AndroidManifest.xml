@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.daf_hayomi.MainActivity"
+            android:name=".views.daf_hayomi.DafHayomiActivity"
             android:theme="@style/DafHayomi.Theme">
         </activity>
         <activity

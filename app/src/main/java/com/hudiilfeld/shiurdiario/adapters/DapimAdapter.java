@@ -1,10 +1,8 @@
 package com.hudiilfeld.shiurdiario.adapters;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.Log;
@@ -16,12 +14,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hudiilfeld.shiurdiario.R;
-import com.hudiilfeld.shiurdiario.Utils;
 import com.hudiilfeld.shiurdiario.adapters.DapimAdapter.DafViewHolder;
 import com.hudiilfeld.shiurdiario.models.Daf;
-import com.hudiilfeld.shiurdiario.models.WebResponse_previousDaf;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.MainActivity;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.DafHayomiActivity;
 
 import java.util.List;
 
@@ -91,7 +86,7 @@ public class DapimAdapter extends Adapter<DafViewHolder> {
             parentView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, MainActivity.class);
+                    Intent intent = new Intent(mContext, DafHayomiActivity.class);
                     intent.putExtra(PREFIX, prefix);
                     intent.putExtra(DAF_DATE, dafDate);
                     mContext.startActivity(intent);
@@ -99,7 +94,7 @@ public class DapimAdapter extends Adapter<DafViewHolder> {
 //                    mContext.getSupportFragmentManager()
 //                            .beginTransaction()
 //                            .add(R.id.viewPager,
-//                                    Dapim_tab.newInstance(Utils.getCurrentDate(),
+//                                    Dapim_fragment.newInstance(Utils.getCurrentDate(),
 //                                            data.get(getAdapterPosition())
 //                                                    .getMasechet()))
 //                            .commit();

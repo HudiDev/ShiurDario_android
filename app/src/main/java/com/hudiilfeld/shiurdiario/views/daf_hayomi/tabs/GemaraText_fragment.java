@@ -18,7 +18,7 @@ import com.hudiilfeld.shiurdiario.view_models.RetrievePdf;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GemaraText_tab extends Fragment {
+public class GemaraText_fragment extends Fragment {
 
     PDFView pdfViewer;
     ProgressBar pdfProgressBar;
@@ -26,11 +26,11 @@ public class GemaraText_tab extends Fragment {
 
     public static final String PREFIX = "prefix";
 
-    private GemaraText_tab.OnFragmentInteractionListener mListener;
+    private GemaraText_fragment.OnFragmentInteractionListener mListener;
 
 
-    public static GemaraText_tab newInstance(String prefix) {
-        GemaraText_tab fragment = new GemaraText_tab();
+    public static GemaraText_fragment newInstance(String prefix) {
+        GemaraText_fragment fragment = new GemaraText_fragment();
         Bundle args = new Bundle();
         args.putString(PREFIX, prefix);
         fragment.setArguments(args);
@@ -41,8 +41,8 @@ public class GemaraText_tab extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof GemaraText_tab.OnFragmentInteractionListener) {
-            mListener = (GemaraText_tab.OnFragmentInteractionListener) context;
+        if (context instanceof GemaraText_fragment.OnFragmentInteractionListener) {
+            mListener = (GemaraText_fragment.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

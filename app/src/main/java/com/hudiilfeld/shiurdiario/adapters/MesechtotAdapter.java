@@ -3,7 +3,6 @@ package com.hudiilfeld.shiurdiario.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.Log;
@@ -12,14 +11,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.Utils;
 import com.hudiilfeld.shiurdiario.adapters.MesechtotAdapter.MesechtaViewHolder;
 import com.hudiilfeld.shiurdiario.models.Masechta;
 import com.hudiilfeld.shiurdiario.views.HomeActivity;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_fragment;
 
 import java.util.List;
 
@@ -80,7 +78,7 @@ public class MesechtotAdapter extends Adapter<MesechtaViewHolder>{
                     Log.d("wedfwa", "fvsfsfvsfvs");
                     context.getSupportFragmentManager().beginTransaction()
                             .add(id,
-                                    Dapim_tab.newInstance(Utils.getCurrentDate(),
+                                    Dapim_fragment.newInstance(Utils.getCurrentDate(),
                                             data.get(getAdapterPosition())
                                                     .getMasechet()))
                             .addToBackStack(null).commit();

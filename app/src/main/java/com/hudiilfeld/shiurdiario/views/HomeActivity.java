@@ -17,23 +17,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import com.github.barteksc.pdfviewer.PDFView;
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.Utils;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.DedicationTab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.MainActivity;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab.OnFragmentInteractionListener;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.GemaraText_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Video_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.Dedication_fragment;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.DafHayomiActivity;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_fragment;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Masechtot_fragment;
 
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        Dapim_tab.OnFragmentInteractionListener,
-        AllMasechtot_tab.OnFragmentInteractionListener {
+        Dapim_fragment.OnFragmentInteractionListener,
+        Masechtot_fragment.OnFragmentInteractionListener {
 
     public static final String TAG = "prefixAccepted";
 
@@ -115,7 +111,7 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.home) {
 
         } else if (id == R.id.daf_hayomi) {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, DafHayomiActivity.class);
             intent.putExtra(PREFIX, prefix);
             startActivity(intent);
         } else if (id == R.id.shiurim) {
@@ -123,14 +119,14 @@ public class HomeActivity extends AppCompatActivity
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragmentContainer,
-                            AllMasechtot_tab.newInstance(Utils.getCurrentDate()))
+                            Masechtot_fragment.newInstance(Utils.getCurrentDate()))
                     .addToBackStack(null)
                     .commit();
 
         } else if (id == R.id.dedicatorias) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragmentContainer, new DedicationTab())
+                    .replace(R.id.fragmentContainer, new Dedication_fragment())
                     .addToBackStack(null)
                     .commit();
 

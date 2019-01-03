@@ -1,9 +1,9 @@
 package com.hudiilfeld.shiurdiario.dagger_injections;
 
 
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.DedicationTab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.Dedication_fragment;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_fragment;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Masechtot_fragment;
 
 import javax.inject.Singleton;
 
@@ -14,9 +14,9 @@ import dagger.Component;
 public interface AppComponent {
 
 
-    void inject(Dapim_tab dapimTab);
+    void inject(Dapim_fragment dapimTab);
 
-    void inject(AllMasechtot_tab masechtotTab);
+    void inject(Masechtot_fragment masechtotTab);
 
-    void inject(DedicationTab dedicationTab);
+    void inject(Dedication_fragment dedicationTab);
 }

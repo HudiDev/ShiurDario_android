@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".views.daf_hayomi.DedicationTab">
+    tools:context=".views.daf_hayomi.Dedication_fragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

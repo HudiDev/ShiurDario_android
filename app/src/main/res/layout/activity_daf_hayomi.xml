@@ -5,6 +5,6 @@
     android:layout_height="match_parent"
     android:id="@+id/mainContainer"
     android:orientation="vertical"
-    tools:context=".views.daf_hayomi.MainActivity">
+    tools:context=".views.daf_hayomi.DafHayomiActivity">
 
 </FrameLayout>

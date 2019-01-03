@@ -5,17 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.hudiilfeld.shiurdiario.R;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.AllMasechtot_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.GemaraText_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_tab;
-import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Video_tab;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_fragment;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Masechtot_fragment;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.GemaraText_fragment;
+import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Video_fragment;
 
 import static com.hudiilfeld.shiurdiario.adapters.DapimAdapter.DAF_DATE;
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
 
-public class MainActivity extends AppCompatActivity implements Video_tab.OnFragmentInteractionListener,
-        GemaraText_tab.OnFragmentInteractionListener, Dapim_tab.OnFragmentInteractionListener,
-        AllMasechtot_tab.OnFragmentInteractionListener
+public class DafHayomiActivity extends AppCompatActivity implements Video_fragment.OnFragmentInteractionListener,
+        GemaraText_fragment.OnFragmentInteractionListener, Dapim_fragment.OnFragmentInteractionListener,
+        Masechtot_fragment.OnFragmentInteractionListener
          {
 
 
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements Video_tab.OnFragm
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_daf_hayomi);
 
         prefix = getIntent().getStringExtra(PREFIX);
         dafDate = getIntent().getStringExtra(DAF_DATE);
