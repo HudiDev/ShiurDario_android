@@ -56,9 +56,18 @@ public class DapimAdapter extends Adapter<DafViewHolder> {
         Daf daf = data.get(position);
         holder.dafNameTV.setText(daf.getMasechet() + " " + daf.getDaf());
         holder.durationTV.setText("Duration: " + daf.getDuration());
-        holder.dateTV.setText(daf.getDate());
-        holder.hebMonthDayTV.setText(daf.getHebmonth() + " " + daf.getHebdate());
-        holder.hebYearTV.setText(daf.getHebyear());
+
+        String date = daf.getDate() != null ? daf.getDate() : daf.getDafdate();
+        holder.dateTV.setText(date);
+
+        if (daf.getHebmonth() != null) {
+            holder.hebMonthDayTV.setText(daf.getHebmonth() + " " + daf.getHebdate());
+            holder.hebYearTV.setText(daf.getHebyear());
+        } else {
+            holder.hebMonthDayTV.setText("");
+            holder.hebYearTV.setText("");
+        }
+
 
         holder.passPrefix(daf.getPrefix(), daf.getSqldate(), daf.getMasechet(), daf.getDaf());
     }
