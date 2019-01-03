@@ -5,13 +5,12 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/backBtnIV"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:srcCompat="@drawable/icons8_back_arrow" />
 
     <TextView
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -21,6 +20,7 @@
         android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/homeBtnIV"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentEnd="true"

@@ -4,6 +4,10 @@ import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_fragment;
@@ -14,13 +18,17 @@ import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Video_fragment;
 import static com.hudiilfeld.shiurdiario.adapters.DapimAdapter.DAF_DATE;
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
 
-public class DafHayomiActivity extends AppCompatActivity implements Video_fragment.OnFragmentInteractionListener,
+public class DafHayomiActivity extends AppCompatActivity implements OnClickListener, Video_fragment.OnFragmentInteractionListener,
         GemaraText_fragment.OnFragmentInteractionListener, Dapim_fragment.OnFragmentInteractionListener,
         Masechtot_fragment.OnFragmentInteractionListener
          {
 
 
     String prefix, dafDate;
+
+    //actionBar properties
+    ImageView backBtnIV, homeBtnIV;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +38,17 @@ public class DafHayomiActivity extends AppCompatActivity implements Video_fragme
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar);
 
+        ImageView backBtnIV = findViewById(R.id.backBtnIV);
+        ImageView homeBtnIV = findViewById(R.id.homeBtnIV);
+        backBtnIV.setOnClickListener(this);
+        homeBtnIV.setOnClickListener(this);
+
         prefix = getIntent().getStringExtra(PREFIX);
         dafDate = getIntent().getStringExtra(DAF_DATE);
 
         moveToFragment(prefix, dafDate);
+
+
     }
 
 
@@ -45,11 +60,25 @@ public class DafHayomiActivity extends AppCompatActivity implements Video_fragme
     }
 
 
+     @Override
+     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.backBtnIV:
+                super.onBackPressed();
+                break;
+            case R.id.homeBtnIV:
+
+                break;
+        }
+     }
 
 
      @Override
      public void onFragmentInteraction(Uri uri) {
 
      }
+
+
+
 
 }
