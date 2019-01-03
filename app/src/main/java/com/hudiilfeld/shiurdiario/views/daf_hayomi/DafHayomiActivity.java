@@ -1,5 +1,6 @@
 package com.hudiilfeld.shiurdiario.views.daf_hayomi;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hudiilfeld.shiurdiario.R;
+import com.hudiilfeld.shiurdiario.views.HomeActivity;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_fragment;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Masechtot_fragment;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.GemaraText_fragment;
@@ -77,6 +79,10 @@ public class DafHayomiActivity extends AppCompatActivity implements OnClickListe
                 super.onBackPressed();
                 break;
             case R.id.homeBtnIV:
+                Intent intent = new Intent(this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
 
                 break;
         }
