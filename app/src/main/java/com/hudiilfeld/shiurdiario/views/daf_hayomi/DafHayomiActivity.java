@@ -37,7 +37,6 @@ public class DafHayomiActivity extends AppCompatActivity implements Video_fragme
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.mainContainer, ViewPagerContainer_fragment.newInstance(prefix, dafDate))
-                .addToBackStack(null)
                 .commit();
     }
 
