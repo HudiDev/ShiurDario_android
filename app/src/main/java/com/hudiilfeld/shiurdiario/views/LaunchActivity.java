@@ -29,7 +29,7 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
 
-        progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.videoProgressBar);
 
 
         Retrofit.Builder builder = new Builder()

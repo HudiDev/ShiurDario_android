@@ -3,36 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
-
     tools:context=".views.daf_hayomi.tabs.Video_fragment">
 
 
-    <LinearLayout
+   <VideoView
+       android:id="@+id/videoView"
+       android:layout_alignParentTop="true"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentStart="true"
+       android:layout_alignParentEnd="true"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:backgroundTint="#7e7e7e"
+       android:layout_centerInParent="true"
+       android:visibility="invisible"
+       />
+
+    <ImageView
+        android:id="@+id/videoThumbnail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/videoView"
-            android:layout_marginBottom="20dp"
-            android:gravity="center_horizontal"
-            android:text="Chulin 27"
-            android:textColor="#000"
-            android:textSize="30sp" />
-
-
-       <com.hudiilfeld.shiurdiario.views.SquareVideoView
-           android:id="@+id/videoView"
-           android:layout_width="match_parent"
-           android:layout_height="420dp"
-           android:layout_centerVertical="true"
-           />
-
-    </LinearLayout>
+        />
 
 
     <Button
@@ -41,14 +34,15 @@
         android:layout_height="100dp"
         android:layout_centerInParent="true"
         android:background="@drawable/ic_play_arrow_white_24dp"
-         />
+        android:visibility="invisible"
+        />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/videoProgressBar"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"
-        android:indeterminate="true"/>
+        android:layout_centerInParent="true"/>
+
 
 </RelativeLayout>
