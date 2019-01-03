@@ -79,7 +79,7 @@ public class MesechtotAdapter extends Adapter<MesechtaViewHolder>{
                     }
                     Log.d("wedfwa", "fvsfsfvsfvs");
                     context.getSupportFragmentManager().beginTransaction()
-                            .replace(id,
+                            .add(id,
                                     Dapim_tab.newInstance(Utils.getCurrentDate(),
                                             data.get(getAdapterPosition())
                                                     .getMasechet()))
