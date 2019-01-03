@@ -27,7 +27,7 @@ import javax.inject.Inject;
  */
 public class Dedication_fragment extends Fragment {
 
-    TextView dedicationTV;
+    TextView dedicationTV, subtitleTV, headTitleTV;
 
     @Inject ViewModelFactory<DedicationRepo> factory;
     @Inject DedicationRepo repository;
@@ -44,6 +44,9 @@ public class Dedication_fragment extends Fragment {
 
 
         dedicationTV = v.findViewById(R.id.dedicationTV);
+        headTitleTV = v.findViewById(R.id.headTitleTV);
+        subtitleTV = v.findViewById(R.id.subtitleTV);
+
         progressBar = v.findViewById(R.id.dedicationProgressBar);
 
         factory = new ViewModelFactory<>(repository);
@@ -55,7 +58,12 @@ public class Dedication_fragment extends Fragment {
             @Override
             public void onChanged(@Nullable WebResponse_masechet webResponse_masechet) {
 
-                String name = webResponse_masechet.getD().getDedication().split(":")[1];
+                String[] dedicationArray = webResponse_masechet.getD().getDedication().split(":");
+
+                headTitleTV.setText("OS SHIURIM DE HOJE ESTAO DEDICADOS");
+                subtitleTV.setText("A ELEVAÇÃO DA ALMA DE:");
+
+                String name = buildStringFromArray(dedicationArray);
 
                 progressBar.setVisibility(View.GONE);
                 dedicationTV.setVisibility(View.VISIBLE);
@@ -64,6 +72,16 @@ public class Dedication_fragment extends Fragment {
         });
 
         return v;
+    }
+
+    private String buildStringFromArray(String[] arr) {
+        String name = "";
+        for (int i = 0; i < arr.length; i++) {
+            if (i > 0) {
+                name += arr[i];
+            }
+        }
+        return name;
     }
 
 }

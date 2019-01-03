@@ -8,23 +8,57 @@
     tools:context=".views.daf_hayomi.Dedication_fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/dedicationTV"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:padding="40dp"
-        android:layout_margin="30dp"
-        android:gravity="center"
         android:layout_centerInParent="true"
-        android:textColor="#000000"
-        android:background="@drawable/title_border"
-        android:visibility="invisible"
-        />
+        android:background="@drawable/daf_border"
+        android:padding="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/headTitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:text=""/>
+
+        <TextView
+            android:id="@+id/subtitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textColor="#000"
+            android:text=""/>
+        <TextView
+            android:id="@+id/dedicationTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text=""
+            android:layout_centerInParent="true"
+            android:textColor="#9a0707"
+            android:background="@drawable/title_border"
+            android:visibility="visible"
+            />
+
+    </LinearLayout>
+
 
     <ProgressBar
         android:id="@+id/dedicationProgressBar"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_centerInParent="true"/>
+
 
 </RelativeLayout>
