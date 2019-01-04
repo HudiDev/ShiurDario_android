@@ -3,46 +3,43 @@ package com.hudiilfeld.shiurdiario.views;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.Utils;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.Dedication_fragment;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.DafHayomiActivity;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Dapim_fragment;
 import com.hudiilfeld.shiurdiario.views.daf_hayomi.tabs.Masechtot_fragment;
-
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.DAF;
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.MASECHET;
 import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,
+        implements OnClickListener, NavigationView.OnNavigationItemSelectedListener,
         Dapim_fragment.OnFragmentInteractionListener,
         Masechtot_fragment.OnFragmentInteractionListener {
 
     public static final String TAG = "prefixAccepted";
 
-    ImageView imageView;
     String prefix;
     String masechet, daf;
 
     //ToolBar properties
     TextView homeTitle;
+    ImageButton homeBtnIB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +54,10 @@ public class HomeActivity extends AppCompatActivity
         daf = getIntent().getStringExtra(DAF);
 
         homeTitle = findViewById(R.id.homeTitle);
+        homeBtnIB = findViewById(R.id.homeBtnIB);
+        homeBtnIB.setOnClickListener(this);
 
         Log.d(TAG, prefix);
-
-        imageView = findViewById(R.id.imageView);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -72,6 +68,19 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.homeBtnIB) {
+            Log.d("TAG", "image button clicked!!");
+            FragmentManager fm = getSupportFragmentManager();
+            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                fm.popBackStack();
+            }
+        }
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -157,9 +166,18 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FragmentManager fm = getSupportFragmentManager();
+        for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+            fm.popBackStack();
+        }
+    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
 
     }
+
 }

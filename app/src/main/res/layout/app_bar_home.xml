@@ -30,7 +30,7 @@
             </android.support.v7.widget.Toolbar>
 
             <ImageButton
-                android:id="@+id/homeBtnIV"
+                android:id="@+id/homeBtnIB"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
