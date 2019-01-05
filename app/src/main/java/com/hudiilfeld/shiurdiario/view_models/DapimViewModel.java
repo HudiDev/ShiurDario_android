@@ -21,8 +21,8 @@ public class DapimViewModel extends SuperViewModel<DapimRepo>{
         mPreviousDapim = super.repository.getPreviousDapimData(currentDate);
     }
 
-    public void initShiurimDapim(String mashechet, int page) {
-        mShiurDapim = super.repository.getShiurDapim(mashechet, page);
+    public void initShiurimDapim(String masechet, int page) {
+        mShiurDapim = super.repository.getShiurDapim(masechet, page);
     }
 
     public LiveData<WebResponse_previousDaf> getPreviousDapim() {
