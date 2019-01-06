@@ -17,9 +17,15 @@ import retrofit2.Response;
 
 public class DapimRepo extends SuperRepo{
 
+    MutableLiveData<WebResponse_shiurDaf> mShiurDapimData;
+
     @Inject
     public DapimRepo(WebService webService) {
         super(webService);
+    }
+
+    public void initData() {
+        mShiurDapimData = new MutableLiveData<>();
     }
 
 
@@ -43,16 +49,14 @@ public class DapimRepo extends SuperRepo{
         return data;
     }
 
-    public LiveData<WebResponse_shiurDaf> getShiurDapim(String masechet, int page) {
+    public MutableLiveData<WebResponse_shiurDaf> getShiurDapim(String masechet, int page) {
 
         Integer optionalPage = page > 0 ? page : null;
-
-        final MutableLiveData<WebResponse_shiurDaf> data = new MutableLiveData<>();
 
         super.webService.getShiurDapim(masechet, optionalPage).enqueue(new Callback<WebResponse_shiurDaf>() {
             @Override
             public void onResponse(Call<WebResponse_shiurDaf> call, Response<WebResponse_shiurDaf> response) {
-                data.setValue(response.body());
+                mShiurDapimData.setValue(response.body());
             }
 
             @Override
@@ -61,6 +65,6 @@ public class DapimRepo extends SuperRepo{
             }
         });
 
-        return data;
+        return mShiurDapimData;
     }
 }

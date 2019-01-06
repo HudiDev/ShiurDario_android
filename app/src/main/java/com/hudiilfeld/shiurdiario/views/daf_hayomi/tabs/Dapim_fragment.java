@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,6 @@ import com.hudiilfeld.shiurdiario.view_models.DapimViewModel;
 import com.hudiilfeld.shiurdiario.view_models.viewModelProvides.ViewModelFactory;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -35,18 +35,21 @@ import javax.inject.Inject;
  */
 public class Dapim_fragment extends Fragment {
 
-    RecyclerView dapimRV;
-    List<Daf> data;
+    private RecyclerView dapimRV;
     @Inject ViewModelFactory<DapimRepo> factory;
     @Inject DapimRepo dapimRepo;
-    DapimViewModel viewModel;
-
-
+    private DapimViewModel viewModel;
+    private LinearLayoutManager mLinearLayoutManager;
+    private int maxNumOfPages;
+    private int numOfSkips = 1;
+    private boolean loading = false;
 
     private Dapim_fragment.OnFragmentInteractionListener mListener;
 
     public static final String CURRENT_DATE = "currentDate";
     public static final String MASECHET = "masechet";
+
+
 
     public static Dapim_fragment newInstance(String currentDate,
                                              @Nullable String masechet) {
@@ -78,7 +81,8 @@ public class Dapim_fragment extends Fragment {
 
         dapimRV = v.findViewById(R.id.previousDapimRV);
 
-        dapimRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        mLinearLayoutManager = new LinearLayoutManager(getContext());
+        dapimRV.setLayoutManager(mLinearLayoutManager);
 
         String currentDate = getArguments().getString(CURRENT_DATE);
 
@@ -101,21 +105,47 @@ public class Dapim_fragment extends Fragment {
 
         } else {
 
-            viewModel.initShiurimDapim(getArguments().getString(MASECHET), 0);
+            viewModel.initShiurDapim(getArguments().getString(MASECHET));
             viewModel.getShiurDapim().observe(this, new Observer<WebResponse_shiurDaf>() {
                 @Override
                 public void onChanged(@Nullable WebResponse_shiurDaf webResponse_shiurDaf) {
+                    maxNumOfPages = webResponse_shiurDaf.getPages().size();
                     adapter.setData(webResponse_shiurDaf.getDapim());
+                    loading = true;
                     //dapimRV.setAdapter(new DapimAdapter(getActivity(), webResponse_shiurDaf.getDapim()));
                 }
             });
         }
 
+
+        dapimRV.addOnScrollListener(new OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+                if (getArguments().getString(MASECHET) == null || maxNumOfPages == 0)
+                    return;
+
+                if (dy > 0) {
+                    if (!loading) { return; }
+                    int totalItemCount = mLinearLayoutManager.getItemCount();
+                    int lastVisibleItem = mLinearLayoutManager.findLastVisibleItemPosition();
+                    int visibleThreshold = 3;
+
+                    if (totalItemCount <= (lastVisibleItem + visibleThreshold)) {
+                        loading = false;
+                        if (numOfSkips >= maxNumOfPages)
+                            return;
+
+                        numOfSkips++;
+                        adapter.addProgressBar();
+                        viewModel.loadNewData(getArguments().getString(MASECHET), numOfSkips);
+                    }
+                }
+            }
+        });
+
         return v;
     }
-
-
-
 
 
 

@@ -69,13 +69,11 @@ public class MesechtotAdapter extends Adapter<MesechtaViewHolder>{
                     int id;
 
                     if (context instanceof HomeActivity) {
-                        Log.d("TAG", "coming from home activity");
                         id = R.id.fragmentContainer;
                     } else {
-                        Log.d("TAG", "coming from daf-hayomi activity");
                         id = R.id.mainContainer;
                     }
-                    Log.d("wedfwa", "fvsfsfvsfvs");
+
                     context.getSupportFragmentManager().beginTransaction()
                             .add(id,
                                     Dapim_fragment.newInstance(Utils.getCurrentDate(),
