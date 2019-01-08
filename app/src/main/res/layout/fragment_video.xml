@@ -8,7 +8,7 @@
     tools:context=".views.daf_hayomi.tabs.Video_fragment">
 
 
-   <VideoView
+   <com.hudiilfeld.shiurdiario.helpers.CustomVideoView
        android:id="@+id/videoView"
        android:layout_alignParentTop="true"
        android:layout_alignParentBottom="true"

@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,10 +19,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
-import android.widget.VideoView;
 
 import com.hudiilfeld.shiurdiario.R;
 import com.hudiilfeld.shiurdiario.Utils;
+import com.hudiilfeld.shiurdiario.helpers.CustomVideoView;
+import com.hudiilfeld.shiurdiario.helpers.CustomVideoView.OnPlayPauseListener;
 
 
 /**
@@ -29,7 +31,7 @@ import com.hudiilfeld.shiurdiario.Utils;
  */
 public class Video_fragment extends Fragment {
 
-    VideoView videoView;
+    CustomVideoView videoView;
     Button btnPlay;
     ProgressBar videoProgressBar;
     String prefix;
@@ -91,6 +93,19 @@ public class Video_fragment extends Fragment {
             }
         });
 
+        videoView.setPlayPauseListener(new OnPlayPauseListener() {
+            @Override
+            public void onPlay() {
+                videoThumbnail.setVisibility(View.INVISIBLE);
+                btnPlay.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onPause() {
+                btnPlay.setVisibility(View.VISIBLE);
+            }
+        });
+
         btnPlay.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,9 +124,9 @@ public class Video_fragment extends Fragment {
         Uri videoUri = Uri.parse(videoEndPoint);
         videoView.setVideoURI(videoUri);
 
-        MediaController vidController = new MediaController(getContext());
-        vidController.setAnchorView(videoView);
-        videoView.setMediaController(vidController);
+        MediaController videoController = new MediaController(getContext());
+        videoController.setAnchorView(videoView);
+        videoView.setMediaController(videoController);
 
         return v;
     }
