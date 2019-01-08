@@ -1,4 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
 
 android {
     compileSdkVersion 27
@@ -47,5 +52,7 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-android-processor:$dagger2_version"
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
 
-
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.8@aar') {
+        transitive = true
+    }
 }
