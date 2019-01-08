@@ -11,6 +11,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
 import com.hudiilfeld.shiurdiario.R;
 
 import static com.hudiilfeld.shiurdiario.adapters.DapimAdapter.DAF_DATE;
@@ -23,7 +25,7 @@ import static com.hudiilfeld.shiurdiario.views.LaunchActivity.PREFIX;
  */
 public class ViewPagerContainer_fragment extends Fragment{
 
-    TabLayout tabLayout;
+    TabLayout mTabLayout;
     ViewPager viewPager;
     PagerAdapter pagerAdapter;
 
@@ -46,23 +48,24 @@ public class ViewPagerContainer_fragment extends Fragment{
 
         View v = inflater.inflate(R.layout.fragment_view_pager_container_fragment, container, false);
 
-        tabLayout = v.findViewById(R.id.tabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Video"));
-        tabLayout.addTab(tabLayout.newTab().setText("Gemara Text"));
-        tabLayout.addTab(tabLayout.newTab().setText("PREVIOUS DAPIM"));
-        tabLayout.addTab(tabLayout.newTab().setText("ALL MASECHTOT"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
+        mTabLayout = v.findViewById(R.id.tabLayout);
+        mTabLayout.addTab(mTabLayout.newTab().setText("Video"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("Gemara Text"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("PREVIOUS DAPIM"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("ALL MASECHTOT"));
+
+        TabsWithEqualWidth();
 
         viewPager = v.findViewById(R.id.viewPager);
 
         pagerAdapter = new PagerAdapter(getActivity().getSupportFragmentManager(),
-                tabLayout.getTabCount(),
+                mTabLayout.getTabCount(),
                 getArguments().getString(PREFIX),  getArguments().getString(DAF_DATE));
 
         viewPager.setAdapter(pagerAdapter);
-        viewPager.addOnPageChangeListener(new TabLayoutOnPageChangeListener(tabLayout));
+        viewPager.addOnPageChangeListener(new TabLayoutOnPageChangeListener(mTabLayout));
 
-        tabLayout.addOnTabSelectedListener(new OnTabSelectedListener() {
+        mTabLayout.addOnTabSelectedListener(new OnTabSelectedListener() {
             @Override
             public void onTabSelected(Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
@@ -76,6 +79,18 @@ public class ViewPagerContainer_fragment extends Fragment{
 
 
         return v;
+    }
+
+    private void TabsWithEqualWidth() {
+
+        ViewGroup slidingTabStrip = (ViewGroup) mTabLayout.getChildAt(0);
+        for (int i = 0; i < mTabLayout.getTabCount(); i++) {
+            View tab = slidingTabStrip.getChildAt(i);
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) tab.getLayoutParams();
+            layoutParams.weight = 1;
+            tab.setLayoutParams(layoutParams);
+        }
+
     }
 
 }
