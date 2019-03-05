@@ -49,10 +49,10 @@ public class ViewPagerContainer_fragment extends Fragment{
         View v = inflater.inflate(R.layout.fragment_view_pager_container_fragment, container, false);
 
         mTabLayout = v.findViewById(R.id.tabLayout);
-        mTabLayout.addTab(mTabLayout.newTab().setText("Video"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("Gemara Text"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("PREVIOUS DAPIM"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("ALL MASECHTOT"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("VÍDEO"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("TEXTO DE GUEMARÁ"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("AULAS PASSADAS"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("LISTA DE TRATADOS"));
 
         TabsWithEqualWidth();
 
